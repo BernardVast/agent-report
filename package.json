@@ -1,0 +1,12 @@
+{
+  "name": "agent-reports",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "new": "node scripts/new.mjs",
+    "restyle:check": "node scripts/restyle-check.mjs",
+    "build": "node scripts/build.mjs",
+    "serve": "node scripts/serve.mjs"
+  }
+}

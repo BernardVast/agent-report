@@ -1,0 +1,11 @@
+dist/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+**/.auth/
+**/storage-state*.json
+**/*cookies*.json
+server.log
+server.pid

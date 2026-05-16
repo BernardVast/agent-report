@@ -1,0 +1,16 @@
+{
+  "title": "Agent Reports UI smoke test",
+  "date": "2026-05-16",
+  "status": "pass",
+  "summary": "Smoke report used to verify the reporting dashboard, report template, status pills, stats, findings, and evidence layout render correctly.",
+  "target": "Agent Reports dashboard",
+  "tags": [
+    "manual",
+    "regression",
+    "ui"
+  ],
+  "entry": "index.html",
+  "author": {
+    "name": "QA Agent"
+  }
+}
