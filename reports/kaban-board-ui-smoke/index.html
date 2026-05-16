@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kaban Board UI smoke test · Agent Reports</title>
+  <style>
+/* @agent-reports:base-start — managed by scripts/restyle.mjs */
+:root {
+  --bg: #f7f4ea;
+  --paper: #fffdf7;
+  --ink: #1d241f;
+  --muted: #687266;
+  --line: #ded8c6;
+  --brand: #2f6f4e;
+  --brand-2: #8a5a2b;
+  --pass: #1f7a45;
+  --partial: #a26200;
+  --fail: #b42318;
+  --fixed: #2457c5;
+  --unknown: #667085;
+  --shadow: 0 20px 60px rgba(44, 39, 28, 0.12);
+  color: var(--ink);
+  background: var(--bg);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(47, 111, 78, 0.18), transparent 24rem),
+    radial-gradient(circle at top right, rgba(138, 90, 43, 0.15), transparent 22rem),
+    var(--bg);
+}
+
+a { color: var(--brand); font-weight: 750; }
+
+.page {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: 32px 20px 56px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.logo {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 14px;
+  color: white;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  font-weight: 900;
+}
+
+.nav-links { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.hero, .panel, .report-card, .issue, .stat {
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: rgba(255, 253, 247, 0.88);
+  box-shadow: var(--shadow);
+}
+
+.hero { padding: clamp(22px, 5vw, 48px); margin-bottom: 24px; }
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--brand);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  max-width: 850px;
+  font-size: clamp(2.1rem, 7vw, 4.7rem);
+  line-height: 0.98;
+  letter-spacing: -0.06em;
+}
+
+h2 { margin: 0 0 14px; font-size: 1.35rem; }
+h3 { margin: 0 0 10px; }
+
+.lead {
+  max-width: 820px;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+
+.meta-line { color: var(--muted); font-weight: 650; }
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 7px 11px;
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.pill.pass { background: var(--pass); }
+.pill.partial { background: var(--partial); }
+.pill.fail { background: var(--fail); }
+.pill.fixed { background: var(--fixed); }
+.pill.unknown { background: var(--unknown); }
+
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 22px 0; }
+.stat { padding: 18px; }
+.big-number { display: block; font-size: 2rem; font-weight: 950; }
+.stat span:last-child { color: var(--muted); font-weight: 750; }
+
+.panel { padding: 22px; margin: 18px 0; }
+.panel-accent { border-left: 7px solid var(--brand); }
+.panel-warn { border-left: 7px solid var(--partial); }
+.panel-bad { border-left: 7px solid var(--fail); }
+.panel-good { border-left: 7px solid var(--pass); }
+
+.reports-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.report-card { display: flex; flex-direction: column; gap: 10px; padding: 18px; text-decoration: none; color: var(--ink); }
+.report-card:hover { transform: translateY(-2px); transition: transform 160ms ease; }
+.report-card p { margin: 0; color: var(--muted); line-height: 1.5; }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag { border-radius: 999px; padding: 5px 8px; color: var(--brand); background: #e9f3ec; font-size: 0.76rem; font-weight: 800; }
+
+.issue { padding: 16px; margin: 12px 0; box-shadow: none; }
+.issue.sev-fail { border-left: 7px solid var(--fail); }
+.issue.sev-warn { border-left: 7px solid var(--partial); }
+.issue.sev-pass { border-left: 7px solid var(--pass); }
+.issue.sev-fixed { border-left: 7px solid var(--fixed); }
+
+.shots-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.shots-inline { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 8px; }
+.shot, figure img, video { width: 100%; border: 1px solid var(--line); border-radius: 18px; background: #fff; }
+.shot-caption, figcaption { margin-top: 8px; color: var(--muted); font-size: 0.92rem; }
+
+.kv { display: grid; grid-template-columns: 180px 1fr; gap: 8px 16px; }
+.kv dt { color: var(--muted); font-weight: 850; }
+.kv dd { margin: 0; }
+
+table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 16px; }
+th, td { border-bottom: 1px solid var(--line); padding: 10px; text-align: left; vertical-align: top; }
+th { background: #eee7d7; }
+
+pre, code { border-radius: 12px; background: #25291f; color: #f8ffe5; }
+code { padding: 2px 6px; }
+pre { overflow-x: auto; padding: 16px; }
+pre code { padding: 0; }
+
+.empty-state { color: var(--muted); padding: 28px; text-align: center; }
+
+@media (max-width: 820px) {
+  .stats, .reports-grid, .shots-grid { grid-template-columns: 1fr; }
+  .nav { align-items: flex-start; flex-direction: column; }
+  .kv { grid-template-columns: 1fr; }
+}
+
+/* @agent-reports:base-end */
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="nav" aria-label="Report navigation">
+      <a class="brand" href="../../index.html"><span class="logo">QA</span><strong>Agent Reports</strong></a>
+      <div class="nav-links"><a href="../../index.html">Dashboard</a></div>
+    </nav>
+
+    <header class="hero">
+      <p class="eyebrow">QA evaluation report</p>
+      <h1>Kaban Board UI smoke test</h1>
+      <p class="lead">Smoke-tested the React Kaban Board with <code>agent-browser</code>. All requested test cases passed and evidence was captured as screenshots plus a WebM session recording.</p>
+      <p class="meta-line">Target: http://localhost:5173 · Date: 2026-05-16 · Author: qa-agent</p>
+      <span class="pill pass">pass</span>
+    </header>
+
+    <section class="stats" aria-label="Run summary">
+      <div class="stat"><span class="big-number">9/9</span><span>Test cases passed</span></div>
+      <div class="stat"><span class="big-number">11</span><span>Screenshots</span></div>
+      <div class="stat"><span class="big-number">1</span><span>Session video</span></div>
+      <div class="stat"><span class="big-number">0</span><span>Blocking bugs</span></div>
+    </section>
+
+    <section class="panel panel-good">
+      <h2>Verdict</h2>
+      <p><strong>Pass.</strong> The board rendered correctly and supported task creation, filtering, drag-and-drop between columns, deletion, localStorage persistence, responsive mobile usage, keyboard navigation smoke checks, and blank-title prevention.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Environment</h2>
+      <dl class="kv">
+        <dt>Project</dt><dd><code>C:\Users\Ben10\Documents\Kaban board</code></dd>
+        <dt>App URL</dt><dd><code>http://localhost:5173</code></dd>
+        <dt>Browser tool</dt><dd><code>agent-browser</code> CLI with Chrome / HeadlessChrome 148</dd>
+        <dt>Viewports</dt><dd>Desktop 1280×800; mobile 390×844</dd>
+        <dt>Branch/commit</dt><dd>No git repository detected in app folder during run.</dd>
+        <dt>Auth/secrets</dt><dd>No login was required. No secrets, cookies, exported auth state, tokens, or persistent browser profiles were copied into this report.</dd>
+      </dl>
+    </section>
+
+    <section class="panel">
+      <h2>Commands run</h2>
+      <pre><code>cd "C:\Users\Ben10\Documents\Kaban board"
+npm run dev
+
+cd "C:\Users\Ben10\Documents\Agent Reports"
+npm run new -- kaban-board-ui-smoke "Kaban Board UI smoke test"
+bash reports/kaban-board-ui-smoke/run-qa-agent-browser.sh
+npm run restyle:check
+npm run build</code></pre>
+      <p>Full command transcript: <a href="assets/commands-and-test-output.log">assets/commands-and-test-output.log</a></p>
+    </section>
+
+    <section class="panel">
+      <h2>Expected vs observed</h2>
+      <table>
+        <thead><tr><th>Case</th><th>Observed result</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>TC-01 initial page load</td><td>Header, four columns, demo cards, and stats rendered.</td><td>Pass</td></tr>
+          <tr><td>TC-02 add task</td><td><code>QA test task</code> appeared in To Do with High priority and QA tag; stats updated.</td><td>Pass</td></tr>
+          <tr><td>TC-03 search/filter</td><td>Search narrowed to the QA task; clearing restored the full board.</td><td>Pass</td></tr>
+          <tr><td>TC-04 drag card</td><td>Task moved from To Do to In Progress and source column no longer contained it.</td><td>Pass</td></tr>
+          <tr><td>TC-05 delete task</td><td>Delete button removed the QA task without UI breakage.</td><td>Pass</td></tr>
+          <tr><td>TC-06 persistence</td><td><code>Persistence check</code> remained visible after reload via localStorage.</td><td>Pass</td></tr>
+          <tr><td>TC-07 mobile layout</td><td>390×844 layout remained usable with no horizontal overflow; mobile task creation worked.</td><td>Pass</td></tr>
+          <tr><td>TC-08 accessibility smoke</td><td>Keyboard focus reached form controls; search input and delete buttons have accessible labels.</td><td>Pass</td></tr>
+          <tr><td>TC-09 empty title</td><td>Blank title submit did not add an empty card.</td><td>Pass</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <h2>Findings</h2>
+      <div class="issue sev-pass"><h3>No blocking bugs found</h3><p>All required smoke scenarios met expected behavior. Console output only showed normal Vite/React development messages; no page errors were reported by <code>agent-browser errors</code>.</p></div>
+      <h3>Notes</h3>
+      <ul>
+        <li><code>agent-browser record</code> required ffmpeg. Git Bash did not inherit the new Windows PATH after <code>winget install ffmpeg</code>, so the run script adds the Winget ffmpeg bin directory explicitly.</li>
+        <li>The test intentionally cleared localStorage at the start for deterministic initial demo data, then verified persistence within TC-06.</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>Session recording</h2>
+      <video src="assets/session.webm" controls preload="metadata"></video>
+      <p class="shot-caption">Recording saved as <code>assets/session.webm</code>.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Screenshots</h2>
+      <div class="shots-grid">
+        <figure><img src="assets/01-initial-board.png" alt="TC-01 initial board render"><figcaption>TC-01 initial board render</figcaption></figure>
+<figure><img src="assets/02-added-task.png" alt="TC-02 added QA test task"><figcaption>TC-02 added QA test task</figcaption></figure>
+<figure><img src="assets/03-search-filter.png" alt="TC-03 search filtered to matching task"><figcaption>TC-03 search filtered to matching task</figcaption></figure>
+<figure><img src="assets/04-search-cleared.png" alt="TC-03 search cleared"><figcaption>TC-03 search cleared</figcaption></figure>
+<figure><img src="assets/05-dragged-to-progress.png" alt="TC-04 task dragged to In Progress"><figcaption>TC-04 task dragged to In Progress</figcaption></figure>
+<figure><img src="assets/06-task-deleted.png" alt="TC-05 task deleted"><figcaption>TC-05 task deleted</figcaption></figure>
+<figure><img src="assets/07-before-refresh.png" alt="TC-06 before refresh"><figcaption>TC-06 before refresh</figcaption></figure>
+<figure><img src="assets/08-after-refresh.png" alt="TC-06 after refresh persistence"><figcaption>TC-06 after refresh persistence</figcaption></figure>
+<figure><img src="assets/09-mobile-layout.png" alt="TC-07 mobile layout"><figcaption>TC-07 mobile layout</figcaption></figure>
+<figure><img src="assets/10-keyboard-focus.png" alt="TC-08 keyboard focus"><figcaption>TC-08 keyboard focus</figcaption></figure>
+<figure><img src="assets/11-empty-title-check.png" alt="TC-09 blank title check"><figcaption>TC-09 blank title check</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Raw artifacts</h2>
+      <ul>
+        <li><a href="assets/qa-results.json">qa-results.json</a></li>
+        <li><a href="assets/environment.json">environment.json</a></li>
+        <li><a href="assets/agent-browser-console.log">agent-browser-console.log</a></li>
+        <li><a href="assets/agent-browser-errors.log">agent-browser-errors.log</a></li>
+      </ul>
+    </section>
+
+    <section class="panel panel-accent">
+      <h2>Next actions</h2>
+      <p>No immediate fixes required. For a deeper follow-up, consider automated regression coverage around drag/drop ordering and more comprehensive accessibility checks with a dedicated a11y scanner.</p>
+    </section>
+  </main>
+</body>
+</html>

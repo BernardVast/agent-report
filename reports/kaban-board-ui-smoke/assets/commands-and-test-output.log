@@ -1,0 +1,272 @@
++ agent-browser start C:/Users/Ben10/Documents/Agent Reports/reports/kaban-board-ui-smoke/assets/session.webm http://localhost:5173
+✓ Recording started: C:/Users/Ben10/Documents/Agent Reports/reports/kaban-board-ui-smoke/assets/session.webm
++ agent-browser 1000
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
++ agent-browser 1000
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser -i -c
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+- generic "React workflow boardKaban BoardPlan, prioritize, and move work across a clean kanban-style board.5Ta" [ref=e1] clickable [onclick]
+  - heading "Kaban Board" [level=1, ref=e4]
+  - region "Create and search tasks" [ref=e2]
+    - textbox "Task title" [ref=e5]
+    - textbox "Task description" [ref=e6]
+    - textbox "Task tag" [ref=e7]: General
+    - combobox "Priority" [expanded=false, ref=e8]: Medium
+      - option "Low" [ref=e26]
+      - option "Medium" [selected, ref=e27]
+      - option "High" [ref=e28]
+    - combobox "Target column" [expanded=false, ref=e9]: To Do
+      - option "Backlog" [ref=e29]
+      - option "To Do" [selected, ref=e30]
+      - option "In Progress" [ref=e31]
+      - option "Done" [ref=e32]
+    - button "Add" [ref=e10]
+    - textbox "Search tasks" [ref=e11]
+  - region "Kaban board" [ref=e3]
+    - heading "Backlog" [level=2, ref=e22]
+    - button "Delete Sketch landing page ideas" [ref=e12]
+    - heading "Sketch landing page ideas" [level=3, ref=e13]
+    - button "Delete Write onboarding checklist" [ref=e14]
+    - heading "Write onboarding checklist" [level=3, ref=e15]
+    - heading "To Do" [level=2, ref=e23]
+    - button "Delete Build reusable task card" [ref=e16]
+    - heading "Build reusable task card" [level=3, ref=e17]
+    - heading "In Progress" [level=2, ref=e24]
+    - button "Delete Connect drag and drop" [ref=e18]
+    - heading "Connect drag and drop" [level=3, ref=e19]
+    - heading "Done" [level=2, ref=e25]
+    - button "Delete Create project shell" [ref=e20]
+    - heading "Create project shell" [level=3, ref=e21]
++ ASSERT TC-01 header is Kaban Board
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-01 header is Kaban Board
++ ASSERT TC-01 all columns visible
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-01 all columns visible
++ ASSERT TC-01 initial demo cards visible
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-01 initial demo cards visible
++ ASSERT TC-01 stats visible
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-01 stats visible
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+SAVED 01-initial-board.png
++ agent-browser input[aria-label="Task title"] QA test task
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser input[aria-label="Task description"] Created by QA agent
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser input[aria-label="Task tag"] QA
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser select[aria-label="Priority"] High
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser select[aria-label="Target column"] todo
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser button[type="submit"]
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser 300
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ ASSERT TC-02 new task in To Do
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-02 new task in To Do
++ ASSERT TC-02 priority and tag shown
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-02 priority and tag shown
++ ASSERT TC-02 task count updated
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-02 task count updated
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+SAVED 02-added-task.png
++ agent-browser input[aria-label="Search tasks"] QA test task
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser 300
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ ASSERT TC-03 search leaves one visible task
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-03 search leaves one visible task
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+SAVED 03-search-filter.png
++ agent-browser input[aria-label="Search tasks"]
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser Control+a
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser Backspace
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser 300
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ ASSERT TC-03 clear search restores board
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-03 clear search restores board
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+SAVED 04-search-cleared.png
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
++ agent-browser [data-qa="qa-card"] [data-qa="progress-column"]
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser 500
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ ASSERT TC-04 card moved to In Progress
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-04 card moved to In Progress
++ ASSERT TC-04 card removed from To Do
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-04 card removed from To Do
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+SAVED 05-dragged-to-progress.png
++ agent-browser button[aria-label="Delete QA test task"]
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser 300
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ ASSERT TC-05 task deleted
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-05 task deleted
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+SAVED 06-task-deleted.png
++ agent-browser input[aria-label="Task title"] Persistence check
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser input[aria-label="Task description"] Should survive refresh
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser input[aria-label="Task tag"] Storage
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser select[aria-label="Priority"] Medium
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser select[aria-label="Target column"] todo
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser button[type="submit"]
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser 300
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ ASSERT TC-06 task added before refresh
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-06 task added before refresh
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+SAVED 07-before-refresh.png
++ agent-browser 
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+http://localhost:5173/
++ agent-browser 1000
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ ASSERT TC-06 task persists after refresh
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-06 task persists after refresh
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+SAVED 08-after-refresh.png
++ agent-browser viewport 390 844
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser 300
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser input[aria-label="Task title"] Mobile QA
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser input[aria-label="Task description"] Small task
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser input[aria-label="Task tag"] MOB
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser select[aria-label="Priority"] Low
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser select[aria-label="Target column"] todo
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser button[type="submit"]
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser 300
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ ASSERT TC-07 mobile task creation
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-07 mobile task creation
++ ASSERT TC-07 no horizontal overflow
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-07 no horizontal overflow
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+SAVED 09-mobile-layout.png
++ agent-browser viewport 1280 800
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
++ agent-browser Tab
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser Tab
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ ASSERT TC-08 keyboard focus reaches form
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-08 keyboard focus reaches form
++ ASSERT TC-08 search input accessible label
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-08 search input accessible label
++ ASSERT TC-08 delete buttons labeled
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-08 delete buttons labeled
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+SAVED 10-keyboard-focus.png
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
++ agent-browser input[aria-label="Task title"]
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser Control+a
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser Backspace
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser input[aria-label="Task description"] No title should not add
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser input[aria-label="Task tag"] Blank
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser button[type="submit"]
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ agent-browser 300
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Done
++ ASSERT TC-09 blank title not added
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+PASS TC-09 blank title not added
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+SAVED 11-empty-title-check.png
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
++ agent-browser stop
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Recording saved to C:/Users/Ben10/Documents/Agent Reports/reports/kaban-board-ui-smoke/assets/session.webm
++ agent-browser 
+⚠ --executable-path ignored: daemon already running. Use 'agent-browser close' first to restart with new options.
+✓ Browser closed

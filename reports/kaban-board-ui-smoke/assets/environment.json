@@ -1,0 +1,2 @@
++ agent-browser (() => JSON.stringify({ userAgent: navigator.userAgent, viewport: { width: innerWidth, height: innerHeight }, localStorageKeys: Object.keys(localStorage), url: location.href }, null, 2))()
+"{\n  \"userAgent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/148.0.0.0 Safari/537.36\",\n  \"viewport\": {\n    \"width\": 1280,\n    \"height\": 800\n  },\n  \"localStorageKeys\": [\n    \"kaban-board-columns\"\n  ],\n  \"url\": \"http://localhost:5173/\"\n}"

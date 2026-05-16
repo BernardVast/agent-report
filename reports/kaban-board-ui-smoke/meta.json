@@ -1,0 +1,15 @@
+{
+  "title": "Kaban Board UI smoke test",
+  "date": "2026-05-16",
+  "status": "pass",
+  "summary": "Smoke-tested the React Kaban Board at http://localhost:5173 with agent-browser. All required flows passed: initial render, task creation, search/clear, drag-and-drop, deletion, localStorage persistence, mobile layout, keyboard/accessibility smoke checks, and blank-title handling.",
+  "target": "http://localhost:5173",
+  "tags": [
+    "e2e",
+    "smoke",
+    "react",
+    "agent-browser"
+  ],
+  "entry": "index.html",
+  "author": "qa-agent"
+}
